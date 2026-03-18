@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Servicio de Item para realizar las correspondientes historias de usuario
+ */
 @Service
 @AllArgsConstructor
 public class ItemService {
@@ -27,10 +30,6 @@ public class ItemService {
                 .orElseThrow(() -> new ItemNotFoundException("Item con id " + itemId + " no encontrado"));
     }
 
-    public Item findByEan(String ean) {
-        return itemRepository.findByEan(ean)
-                .orElseThrow(() -> new ItemNotFoundException("Item con ean " + ean + " no encontrado"));
-    }
 
     public void updateItem(Item itemModificado) {
         Item itemOriginal = this.findById(itemModificado.getItemId());

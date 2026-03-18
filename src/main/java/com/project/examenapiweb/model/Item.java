@@ -11,6 +11,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+
+/**
+ * Clase modelo Principal - Item
+ */
+
 @Document(collection = "examenCollection")
 @NoArgsConstructor
 @AllArgsConstructor
