@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas del Inventario</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="header-container">
+    <h1>Dashboard de Estadísticas</h1>
+    <a th:href="@{/items}" class="btn">Volver al Catálogo</a>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Total de Productos</h3>
+        <div class="stat-number" th:text="${stats.totalItems}">0</div>
+        <p>Registrados en la base de datos</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Alerta de Stock Bajo</h3>
+        <div class="stat-number stat-warning" th:text="${stats.itemsLowStock.size()}">0</div>
+        <p>Productos por debajo del mínimo configurado:</p>
+
+        <ul class="low-stock-list">
+            <li th:each="item : ${stats.itemsLowStock}">
+                <a th:href="@{/items/{id}(id=${item.itemId})}"
+                   th:text="${item.title} + ' (' + ${item.count} + ' ud)'">
+                    Nombre del Item
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="manufacturers-list">
+    <h3>Fabricantes en el Catálogo</h3>
+    <ul>
+        <li th:each="marca : ${stats.manufacturers}" th:text="${marca}">Nombre Fabricante</li>
+    </ul>
+</div>
+</body>
+</html>

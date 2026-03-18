@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Items</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="header-container">
+    <h1>Catálogo de Productos</h1>
+    <a th:href="@{/items/stats}" class="btn btn-stats">Ver Estadísticas</a>
+</div>
+<div class="card-container">
+    <div class="card" th:each="item : ${items}">
+        <img th:src="${item.image}" alt="Imagen del producto" class="card-img" th:if="${item.image != null}">
+        <div class="card-content">
+            <h3 th:text="${item.title}">Título</h3>
+            <p class="price" th:text="${item.price} + ' €'">Precio</p>
+            <p class="category" th:text="${item.category}">Categoría</p>
+            <div class="card-actions">
+                <a th:href="@{/items/{id}(id=${item.itemId})}" class="btn">Ver Detalles</a>
+                <a th:href="@{/items/edit/{id}(id=${item.itemId})}" class="btn btn-edit">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

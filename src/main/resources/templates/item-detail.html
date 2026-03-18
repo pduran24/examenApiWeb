@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Item</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="detail-container">
+    <h1 th:text="${item.title}">Título</h1>
+    <div class="detail-grid">
+        <div class="detail-image">
+            <img th:src="${item.image}" alt="Imagen">
+        </div>
+        <div class="detail-info">
+            <p><strong>Precio:</strong> <span th:text="${item.price} + ' €'"></span></p>
+            <p><strong>Fabricante:</strong> <span th:text="${item.manufacturer}"></span></p>
+            <p><strong>Descripción:</strong> <span th:text="${item.description}"></span></p>
+            <p><strong>Stock:</strong> <span th:text="${item.count}"></span> unidades</p>
+            <div class="actions">
+                <a th:href="@{/items}" class="btn">Volver</a>
+                <a th:href="@{/items/edit/{id}(id=${item.itemId})}" class="btn btn-edit">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
